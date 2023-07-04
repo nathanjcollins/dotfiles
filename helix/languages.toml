@@ -1,7 +1,7 @@
 
 [[language]]
 name = "c-sharp"
-language-server.command = "csharp-ls"
+language-servers = ["csharp-ls"]
 formatter = { command = 'dotnet-csharpier' }
 auto-format = true
 
@@ -33,3 +33,46 @@ auto-format = true
 [[language]]
 name = "rust"
 auto-format = true
+
+[[language]]
+name = "vue"
+scope = "text.html.vue"
+injection-regex = "vue"
+file-types = ["vue"]
+auto-format = true
+roots = ["package.json"]
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["vue-language-server"]
+
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[language-server.vue-language-server.config]
+typescript = { tsdk = "/home/nathan/repos/personal/dev-showcase/node_modules/typescript/lib" }
+
+[language-server.vue-language-server.config.languageFeatures]
+semanticTokens = true
+references = true
+definition = true
+typeDefinition = true
+callHierarchy = true
+hover = true
+rename = true
+renameFileRefactoring = true
+signatureHelp = true
+codeAction = true
+completion = { defaultTagNameCase = 'both', defaultAttrNameCase = 'kebabCase' }
+schemaRequestService = true
+documentHighlight = true
+documentLink = true
+codeLens = true
+diagnostics = true
+
+[language-server.vue-language-server.config.documentFeatures]
+documentColor = false
+selectionRange = true
+foldingRange = true
+linkedEditingRange = true
+documentSymbol = true
+documentFormatting = { defaultPrintWidth = 100 }
